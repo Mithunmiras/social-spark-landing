@@ -407,7 +407,7 @@ function GroupBuy() {
   );
 }
 
-
+const promises = [
   { icon: "🌱", title: "平飼自然", desc: "雞隻自由奔跑、不擁擠飼養，回歸最自然的生活方式。" },
   { icon: "🚫", title: "零抗生素", desc: "嚴格把關飼料來源，全程不使用抗生素與生長劑。" },
   { icon: "👨‍⚕️", title: "醫者把關", desc: "張醫師親自監督生產流程，每一顆蛋都通過嚴格檢驗。" },
