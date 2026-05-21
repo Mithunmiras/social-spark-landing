@@ -311,7 +311,103 @@ function Products() {
   );
 }
 
-const promises = [
+const groupBuyTiers = [
+  {
+    size: "10+",
+    title: "小團輕鬆組",
+    perks: ["免運門檻達成", "贈送限量小蛋捲", "專屬團主回饋"],
+    accent: "from-secondary/40 to-secondary/10",
+  },
+  {
+    size: "30+",
+    title: "人氣團購組",
+    perks: ["95 折優惠價", "加贈手工蛋捲一罐", "團主回饋 5%"],
+    accent: "from-primary/30 to-primary/5",
+    featured: true,
+  },
+  {
+    size: "50+",
+    title: "企業團購組",
+    perks: ["9 折優惠價", "客製化禮盒包裝", "團主回饋 8%", "可開立發票"],
+    accent: "from-accent/30 to-accent/5",
+  },
+];
+
+function GroupBuy() {
+  return (
+    <section id="groupbuy" className="py-28 px-6 bg-gradient-warm relative overflow-hidden">
+      <motion.div
+        className="absolute top-10 right-10 w-64 h-64 rounded-full bg-primary/10 blur-3xl"
+        animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <div className="max-w-6xl mx-auto relative">
+        <div className="grid lg:grid-cols-2 gap-12 items-end mb-16">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 text-primary text-sm font-semibold mb-5">
+              <span className="text-base">🛒</span> Group Buy・揪團優惠
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+              一起揪團，<span className="text-gradient-sun">越多越優惠</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              無論是辦公室同事、社區鄰居或好友家人，揪團一起訂購農場特色蛋與手工蛋捲，
+              享受超值團購價，還能成為團主獲得專屬回饋。透過 LINE 一鍵開團，輕鬆又方便。
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {groupBuyTiers.map((t, i) => (
+            <Reveal key={t.title} delay={i * 0.1}>
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`relative h-full rounded-3xl p-7 border ${
+                  t.featured
+                    ? "border-primary/40 bg-card shadow-warm"
+                    : "border-border bg-card/70 backdrop-blur-sm shadow-soft"
+                }`}
+              >
+                {t.featured && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-bold tracking-wider">
+                    最熱門
+                  </div>
+                )}
+                <div className={`inline-flex items-baseline gap-1 px-4 py-2 rounded-2xl bg-gradient-to-br ${t.accent} mb-4`}>
+                  <span className="font-display text-4xl font-bold text-accent">{t.size}</span>
+                  <span className="text-sm text-muted-foreground">人成團</span>
+                </div>
+                <h3 className="font-display text-2xl font-bold text-foreground mb-4">{t.title}</h3>
+                <ul className="space-y-2.5">
+                  {t.perks.map((perk) => (
+                    <li key={perk} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                      <span className="mt-1 w-4 h-4 rounded-full bg-primary/15 text-primary grid place-items-center text-[10px] font-bold flex-shrink-0">✓</span>
+                      {perk}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.3}>
+          <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+            <LineButton>LINE 私訊開團</LineButton>
+            <p className="text-sm text-muted-foreground">
+              開團團主請於 LINE 留言「我要開團」，將有專人為您服務
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+
   { icon: "🌱", title: "平飼自然", desc: "雞隻自由奔跑、不擁擠飼養，回歸最自然的生活方式。" },
   { icon: "🚫", title: "零抗生素", desc: "嚴格把關飼料來源，全程不使用抗生素與生長劑。" },
   { icon: "👨‍⚕️", title: "醫者把關", desc: "張醫師親自監督生產流程，每一顆蛋都通過嚴格檢驗。" },
