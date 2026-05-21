@@ -230,21 +230,17 @@ function Story() {
 const products = [
   {
     img: giftBox,
-    tag: "禮盒首選",
-    title: "經典平飼特色蛋禮盒",
-    desc: "嚴選自然放牧鮮蛋，搭配精美提袋包裝，送禮自用兩相宜。",
+    tag: "農場直送",
+    title: "經典平飼特色蛋",
+    desc: "嚴選自然放牧鮮蛋，蛋黃飽滿、蛋香濃郁，每日新鮮現撿，產地直送到府。",
+    features: ["10入 / 20入 裝", "禮盒包裝可選", "冷藏宅配"],
   },
   {
     img: eggRollJar,
-    tag: "人氣商品",
+    tag: "人氣手作",
     title: "經典手工蛋捲",
-    desc: "以鮮蛋慢火烘烤，層層酥脆、蛋香濃郁，一試便深深「捲」戀。",
-  },
-  {
-    img: eggRollsPoster,
-    tag: "節慶限定",
-    title: "蛋捲禮籃組合",
-    desc: "精緻竹籃包裝，乾燥花點綴，最暖心的節慶送禮選擇。",
+    desc: "以自家鮮蛋慢火烘烤，層層酥脆、蛋香四溢，一試便深深「捲」戀的療癒滋味。",
+    features: ["原味 / 海苔 / 芝麻", "玻璃罐裝保存", "節慶禮盒組合"],
   },
 ];
 
@@ -264,7 +260,7 @@ function Products() {
           </p>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {products.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.12}>
               <motion.div
@@ -272,7 +268,7 @@ function Products() {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="group bg-card rounded-3xl overflow-hidden shadow-soft hover:shadow-warm border border-border h-full flex flex-col"
               >
-                <div className="aspect-[4/5] overflow-hidden bg-muted">
+                <div className="aspect-[4/3] overflow-hidden bg-muted">
                   <motion.img
                     src={p.img}
                     alt={p.title}
@@ -281,17 +277,25 @@ function Products() {
                     transition={{ duration: 0.6 }}
                   />
                 </div>
-                <div className="p-6 flex-1 flex flex-col">
+                <div className="p-7 flex-1 flex flex-col">
                   <span className="self-start text-xs font-bold px-3 py-1 rounded-full bg-secondary/50 text-accent">
                     {p.tag}
                   </span>
                   <h3 className="mt-4 font-display text-2xl font-bold text-foreground">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-muted-foreground text-sm leading-relaxed flex-1">
+                  <p className="mt-2 text-muted-foreground text-sm leading-relaxed">
                     {p.desc}
                   </p>
-                  <div className="mt-5 flex items-center justify-between">
+                  <ul className="mt-4 space-y-1.5 flex-1">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex items-center gap-2 text-sm text-foreground/80">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-6 flex items-center justify-between pt-4 border-t border-border">
                     <span className="text-xs text-muted-foreground">LINE 訂購・宅配到府</span>
                     <span className="text-primary font-bold group-hover:translate-x-1 transition-transform">→</span>
                   </div>
