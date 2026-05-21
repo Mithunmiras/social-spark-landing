@@ -32,6 +32,7 @@ function Landing() {
       <Hero />
       <Story />
       <Products />
+      <GroupBuy />
       <Promise />
       <CTA />
       <Footer />
@@ -57,6 +58,7 @@ function Nav() {
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
           <a href="#story" className="hover:text-primary transition-colors">品牌故事</a>
           <a href="#products" className="hover:text-primary transition-colors">商品</a>
+          <a href="#groupbuy" className="hover:text-primary transition-colors">團購方案</a>
           <a href="#promise" className="hover:text-primary transition-colors">我們的承諾</a>
         </nav>
         <LineButton size="md">LINE 訂購</LineButton>
