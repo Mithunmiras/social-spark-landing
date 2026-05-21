@@ -32,6 +32,7 @@ function Landing() {
       <Hero />
       <Story />
       <Products />
+      <GroupBuy />
       <Promise />
       <CTA />
       <Footer />
@@ -57,6 +58,7 @@ function Nav() {
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
           <a href="#story" className="hover:text-primary transition-colors">品牌故事</a>
           <a href="#products" className="hover:text-primary transition-colors">商品</a>
+          <a href="#groupbuy" className="hover:text-primary transition-colors">團購方案</a>
           <a href="#promise" className="hover:text-primary transition-colors">我們的承諾</a>
         </nav>
         <LineButton size="md">LINE 訂購</LineButton>
@@ -230,21 +232,17 @@ function Story() {
 const products = [
   {
     img: giftBox,
-    tag: "禮盒首選",
-    title: "經典平飼特色蛋禮盒",
-    desc: "嚴選自然放牧鮮蛋，搭配精美提袋包裝，送禮自用兩相宜。",
+    tag: "農場直送",
+    title: "經典平飼特色蛋",
+    desc: "嚴選自然放牧鮮蛋，蛋黃飽滿、蛋香濃郁，每日新鮮現撿，產地直送到府。",
+    features: ["10入 / 20入 裝", "禮盒包裝可選", "冷藏宅配"],
   },
   {
     img: eggRollJar,
-    tag: "人氣商品",
+    tag: "人氣手作",
     title: "經典手工蛋捲",
-    desc: "以鮮蛋慢火烘烤，層層酥脆、蛋香濃郁，一試便深深「捲」戀。",
-  },
-  {
-    img: eggRollsPoster,
-    tag: "節慶限定",
-    title: "蛋捲禮籃組合",
-    desc: "精緻竹籃包裝，乾燥花點綴，最暖心的節慶送禮選擇。",
+    desc: "以自家鮮蛋慢火烘烤，層層酥脆、蛋香四溢，一試便深深「捲」戀的療癒滋味。",
+    features: ["原味 / 海苔 / 芝麻", "玻璃罐裝保存", "節慶禮盒組合"],
   },
 ];
 
@@ -264,7 +262,7 @@ function Products() {
           </p>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {products.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.12}>
               <motion.div
@@ -272,7 +270,7 @@ function Products() {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="group bg-card rounded-3xl overflow-hidden shadow-soft hover:shadow-warm border border-border h-full flex flex-col"
               >
-                <div className="aspect-[4/5] overflow-hidden bg-muted">
+                <div className="aspect-[4/3] overflow-hidden bg-muted">
                   <motion.img
                     src={p.img}
                     alt={p.title}
@@ -281,17 +279,25 @@ function Products() {
                     transition={{ duration: 0.6 }}
                   />
                 </div>
-                <div className="p-6 flex-1 flex flex-col">
+                <div className="p-7 flex-1 flex flex-col">
                   <span className="self-start text-xs font-bold px-3 py-1 rounded-full bg-secondary/50 text-accent">
                     {p.tag}
                   </span>
                   <h3 className="mt-4 font-display text-2xl font-bold text-foreground">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-muted-foreground text-sm leading-relaxed flex-1">
+                  <p className="mt-2 text-muted-foreground text-sm leading-relaxed">
                     {p.desc}
                   </p>
-                  <div className="mt-5 flex items-center justify-between">
+                  <ul className="mt-4 space-y-1.5 flex-1">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex items-center gap-2 text-sm text-foreground/80">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-6 flex items-center justify-between pt-4 border-t border-border">
                     <span className="text-xs text-muted-foreground">LINE 訂購・宅配到府</span>
                     <span className="text-primary font-bold group-hover:translate-x-1 transition-transform">→</span>
                   </div>
@@ -300,6 +306,102 @@ function Products() {
             </Reveal>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+const groupBuyTiers = [
+  {
+    size: "10+",
+    title: "小團輕鬆組",
+    perks: ["免運門檻達成", "贈送限量小蛋捲", "專屬團主回饋"],
+    accent: "from-secondary/40 to-secondary/10",
+  },
+  {
+    size: "30+",
+    title: "人氣團購組",
+    perks: ["95 折優惠價", "加贈手工蛋捲一罐", "團主回饋 5%"],
+    accent: "from-primary/30 to-primary/5",
+    featured: true,
+  },
+  {
+    size: "50+",
+    title: "企業團購組",
+    perks: ["9 折優惠價", "客製化禮盒包裝", "團主回饋 8%", "可開立發票"],
+    accent: "from-accent/30 to-accent/5",
+  },
+];
+
+function GroupBuy() {
+  return (
+    <section id="groupbuy" className="py-28 px-6 bg-gradient-warm relative overflow-hidden">
+      <motion.div
+        className="absolute top-10 right-10 w-64 h-64 rounded-full bg-primary/10 blur-3xl"
+        animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <div className="max-w-6xl mx-auto relative">
+        <div className="grid lg:grid-cols-2 gap-12 items-end mb-16">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 text-primary text-sm font-semibold mb-5">
+              <span className="text-base">🛒</span> Group Buy・揪團優惠
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+              一起揪團，<span className="text-gradient-sun">越多越優惠</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              無論是辦公室同事、社區鄰居或好友家人，揪團一起訂購農場特色蛋與手工蛋捲，
+              享受超值團購價，還能成為團主獲得專屬回饋。透過 LINE 一鍵開團，輕鬆又方便。
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {groupBuyTiers.map((t, i) => (
+            <Reveal key={t.title} delay={i * 0.1}>
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`relative h-full rounded-3xl p-7 border ${
+                  t.featured
+                    ? "border-primary/40 bg-card shadow-warm"
+                    : "border-border bg-card/70 backdrop-blur-sm shadow-soft"
+                }`}
+              >
+                {t.featured && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-bold tracking-wider">
+                    最熱門
+                  </div>
+                )}
+                <div className={`inline-flex items-baseline gap-1 px-4 py-2 rounded-2xl bg-gradient-to-br ${t.accent} mb-4`}>
+                  <span className="font-display text-4xl font-bold text-accent">{t.size}</span>
+                  <span className="text-sm text-muted-foreground">人成團</span>
+                </div>
+                <h3 className="font-display text-2xl font-bold text-foreground mb-4">{t.title}</h3>
+                <ul className="space-y-2.5">
+                  {t.perks.map((perk) => (
+                    <li key={perk} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                      <span className="mt-1 w-4 h-4 rounded-full bg-primary/15 text-primary grid place-items-center text-[10px] font-bold flex-shrink-0">✓</span>
+                      {perk}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.3}>
+          <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+            <LineButton>LINE 私訊開團</LineButton>
+            <p className="text-sm text-muted-foreground">
+              開團團主請於 LINE 留言「我要開團」，將有專人為您服務
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
