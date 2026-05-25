@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { LineButton } from "@/components/LineButton";
 import { Reveal } from "@/components/Reveal";
 import heroFarm from "@/assets/hero-farm.jpg";
@@ -61,9 +61,61 @@ function Nav() {
           <a href="#groupbuy" className="hover:text-primary transition-colors">團購方案</a>
           <a href="#promise" className="hover:text-primary transition-colors">我們的承諾</a>
         </nav>
-        <LineButton size="md">LINE 訂購</LineButton>
+        <div className="flex items-center gap-4">
+          <div className="hidden md:block">
+            <LineButton size="md">LINE 訂購</LineButton>
+          </div>
+          <MobileMenu />
+        </div>
       </div>
     </motion.header>
+  );
+}
+
+function MobileMenu() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <button
+        onClick={() => setOpen((s) => !s)}
+        aria-label="Toggle menu"
+        className="md:hidden inline-flex items-center justify-center p-2 rounded-lg bg-background/60 border border-border text-foreground"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm p-6">
+          <div className="max-w-md mx-auto">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded-full bg-gradient-sun grid place-items-center shadow-soft">
+                  <span className="text-lg">🥚</span>
+                </div>
+                <span className="font-display font-bold text-lg text-accent">張醫師的樂活農場</span>
+              </div>
+              <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2">
+                ✕
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-6 text-lg font-medium">
+              <a onClick={() => setOpen(false)} href="#story" className="block">品牌故事</a>
+              <a onClick={() => setOpen(false)} href="#products" className="block">商品</a>
+              <a onClick={() => setOpen(false)} href="#groupbuy" className="block">團購方案</a>
+              <a onClick={() => setOpen(false)} href="#promise" className="block">我們的承諾</a>
+            </nav>
+
+            <div className="mt-8">
+              <LineButton size="lg">LINE 訂購</LineButton>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -74,7 +126,7 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   return (
-    <section ref={ref} className="relative pt-32 pb-24 px-6 overflow-hidden">
+    <section ref={ref} className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 overflow-hidden">
       {/* floating decorative eggs */}
       {[...Array(5)].map((_, i) => (
         <motion.div
@@ -190,7 +242,7 @@ function Stat({ n, label }: { n: string; label: string }) {
 
 function Story() {
   return (
-    <section id="story" className="py-28 px-6 bg-gradient-warm">
+    <section id="story" className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-warm">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <Reveal className="relative">
           <div className="aspect-square rounded-3xl overflow-hidden shadow-warm">
@@ -248,7 +300,7 @@ const products = [
 
 function Products() {
   return (
-    <section id="products" className="py-28 px-6">
+    <section id="products" className="py-20 sm:py-28 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <Reveal className="text-center max-w-2xl mx-auto mb-16">
           <div className="text-sm font-semibold tracking-[0.2em] text-primary uppercase mb-4">
@@ -335,7 +387,7 @@ const groupBuyTiers = [
 
 function GroupBuy() {
   return (
-    <section id="groupbuy" className="py-28 px-6 bg-gradient-warm relative overflow-hidden">
+    <section id="groupbuy" className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-warm relative overflow-hidden">
       <motion.div
         className="absolute top-10 right-10 w-64 h-64 rounded-full bg-primary/10 blur-3xl"
         animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
@@ -416,7 +468,7 @@ const promises = [
 
 function Promise() {
   return (
-    <section id="promise" className="py-28 px-6 bg-gradient-deep text-primary-foreground relative overflow-hidden">
+    <section id="promise" className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-deep text-primary-foreground relative overflow-hidden">
       <motion.div
         className="absolute inset-0 opacity-10"
         animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
@@ -457,7 +509,7 @@ function Promise() {
 
 function CTA() {
   return (
-    <section className="py-28 px-6">
+    <section className="py-20 sm:py-28 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         <Reveal>
           <div className="relative bg-gradient-sun rounded-[2.5rem] p-12 md:p-20 text-center overflow-hidden shadow-warm">
