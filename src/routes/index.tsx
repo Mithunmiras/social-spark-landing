@@ -50,10 +50,11 @@ function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-full bg-gradient-sun grid place-items-center shadow-soft">
-            <span className="text-lg">🥚</span>
-          </div>
-          <span className="font-display font-bold text-lg text-accent">張醫師的樂活農場</span>
+          <img
+            src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694465607_3d0f4dbc-7757-40a2-b182-6f4ce878b8df.png"
+            alt="張醫師的樂活農場"
+            className="h-10 w-auto object-contain mix-blend-darken"
+          />
         </div>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
           <a href="#story" className="hover:text-primary transition-colors">品牌故事</a>
@@ -92,10 +93,11 @@ function MobileMenu() {
           <div className="max-w-md mx-auto">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-full bg-gradient-sun grid place-items-center shadow-soft">
-                  <span className="text-lg">🥚</span>
-                </div>
-                <span className="font-display font-bold text-lg text-accent">張醫師的樂活農場</span>
+                <img
+                  src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694465607_3d0f4dbc-7757-40a2-b182-6f4ce878b8df.png"
+                  alt="張醫師的樂活農場"
+                  className="h-10 w-auto object-contain mix-blend-darken"
+                />
               </div>
               <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2">
                 ✕
@@ -126,30 +128,21 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   return (
-    <section ref={ref} className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 overflow-hidden">
-      {/* floating decorative eggs */}
-      {[...Array(5)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full bg-gradient-sun opacity-20 blur-sm"
-          style={{
-            width: 40 + i * 12,
-            height: 50 + i * 14,
-            left: `${10 + i * 18}%`,
-            top: `${15 + (i % 2) * 60}%`,
-          }}
-          animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-          transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
-        />
-      ))}
+    <section
+      ref={ref}
+      className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${heroFarm})` }}
+    >
+      {/* dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/45" />
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative">
-        <motion.div style={{ y, opacity }} className="relative z-10">
+      <div className="max-w-7xl mx-auto relative">
+        <motion.div style={{ y, opacity }} className="relative z-10 max-w-2xl">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/40 border border-secondary text-secondary-foreground text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-sm font-medium mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             經典平飼・自然產出
@@ -159,7 +152,7 @@ function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold leading-[1.05] text-foreground"
+            className="text-5xl md:text-7xl font-bold leading-[1.05] text-white"
           >
             張醫師的
             <br />
@@ -170,7 +163,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed"
+            className="mt-6 text-lg md:text-xl text-white/85 max-w-lg leading-relaxed"
           >
             從自然中孕育，以醫者之心守護每一顆蛋。
             <br />
@@ -196,34 +189,13 @@ function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="mt-12 flex items-center gap-8 text-sm text-muted-foreground"
+            className="mt-12 flex items-center gap-8 text-sm text-white/80"
           >
             <Stat n="100%" label="平飼自然" />
-            <div className="w-px h-10 bg-border" />
+            <div className="w-px h-10 bg-white/30" />
             <Stat n="0" label="抗生素" />
-            <div className="w-px h-10 bg-border" />
+            <div className="w-px h-10 bg-white/30" />
             <Stat n="日日" label="新鮮直送" />
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, rotate: 4 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
-        >
-          <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-warm">
-            <img src={heroFarm} alt="樂活農場放牧雞群" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-accent/40 via-transparent to-transparent" />
-          </div>
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-4 shadow-warm border border-border max-w-[200px]"
-          >
-            <div className="text-xs text-muted-foreground">今日新鮮上架</div>
-            <div className="font-display font-bold text-accent mt-1">經典特色蛋捲</div>
-            <div className="text-xs text-primary mt-1">★★★★★ 顧客回購</div>
           </motion.div>
         </motion.div>
       </div>
@@ -551,8 +523,11 @@ function Footer() {
     <footer className="border-t border-border py-10 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-gradient-sun grid place-items-center text-xs">🥚</div>
-          <span className="font-display font-bold text-accent">張醫師的樂活農場</span>
+          <img
+            src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694465607_3d0f4dbc-7757-40a2-b182-6f4ce878b8df.png"
+            alt="張醫師的樂活農場"
+            className="h-8 w-auto object-contain mix-blend-darken"
+          />
         </div>
         <div>© {new Date().getFullYear()} 樂活農場・經典平飼特色蛋</div>
         <a

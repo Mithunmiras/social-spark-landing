@@ -9,7 +9,6 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import favicon from "../assets/favicon.svg?url";
 
 function NotFoundComponent() {
   return (
@@ -89,8 +88,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "icon",
-        href: favicon,
-        type: "image/svg+xml",
+        href: "https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694768145_Screenshot_2026-05-25_153402.png",
+        type: "image/png",
       },
       {
         rel: "preconnect",
