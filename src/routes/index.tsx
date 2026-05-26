@@ -10,18 +10,6 @@ import drChang from "@/assets/dr-chang.jpg";
 import eggRollJar from "@/assets/egg-roll-jar.jpg";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "張醫師的樂活農場 — 經典平飼特色蛋與手工蛋捲" },
-      {
-        name: "description",
-        content:
-          "來自張醫師的樂活農場，採平飼自然方式飼養，產出營養豐富的特色蛋與手工經典蛋捲。加入 LINE 立即訂購。",
-      },
-      { property: "og:title", content: "張醫師的樂活農場" },
-      { property: "og:description", content: "平飼特色蛋・手工經典蛋捲・LINE 訂購" },
-    ],
-  }),
   component: Landing,
 });
 
