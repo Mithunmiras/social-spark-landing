@@ -5,9 +5,7 @@ import { LineButton } from "@/components/LineButton";
 import { Reveal } from "@/components/Reveal";
 import heroFarm from "@/assets/hero-farm.jpg";
 import eggRollsPoster from "@/assets/egg-rolls-poster.jpg";
-import giftBox from "@/assets/gift-box.jpg";
 import drChang from "@/assets/dr-chang.jpg";
-import eggRollJar from "@/assets/egg-roll-jar.jpg";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -243,14 +241,14 @@ function Story() {
 
 const products = [
   {
-    img: giftBox,
+    img: "https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779936796688_Gemini_Generated_Image_5fvnwp5fvnwp5fvn.png",
     tag: "農場直送",
     title: "經典平飼特色蛋",
     desc: "嚴選自然放牧鮮蛋，蛋黃飽滿、蛋香濃郁，每日新鮮現撿，產地直送到府。",
     features: ["10入 / 20入 裝", "禮盒包裝可選", "冷藏宅配"],
   },
   {
-    img: eggRollJar,
+    img: "https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779936858254_Gemini_Generated_Image_m480y5m480y5m480.png",
     tag: "人氣手作",
     title: "經典手工蛋捲",
     desc: "以自家鮮蛋慢火烘烤，層層酥脆、蛋香四溢，一試便深深「捲」戀的療癒滋味。",
