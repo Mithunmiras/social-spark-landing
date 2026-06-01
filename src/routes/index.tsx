@@ -35,9 +35,9 @@ function Nav() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img
-            src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694465607_3d0f4dbc-7757-40a2-b182-6f4ce878b8df.png"
+            src="https://res.cloudinary.com/dyd43a6jy/image/upload/v1780298016/Gemini_Generated_Image_j75yprj75yprj75y-removebg-preview_buh5md.png"
             alt="張醫師的快樂農場"
-            className="h-10 w-auto object-contain mix-blend-darken"
+            className="h-16 w-auto object-contain "
           />
         </div>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
@@ -78,9 +78,9 @@ function MobileMenu() {
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-2">
                 <img
-                  src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694465607_3d0f4dbc-7757-40a2-b182-6f4ce878b8df.png"
+                  src="https://res.cloudinary.com/dyd43a6jy/image/upload/v1780298016/Gemini_Generated_Image_j75yprj75yprj75y-removebg-preview_buh5md.png"
                   alt="張醫師的快樂農場"
-                  className="h-10 w-auto object-contain mix-blend-darken"
+                  className="h-16 w-auto object-contain "
                 />
               </div>
               <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2">
@@ -114,11 +114,20 @@ function Hero() {
   return (
     <section
       ref={ref}
-      className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: `url(https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779937031297_Gemini_Generated_Image_uincsyuincsyuinc__1_.png)` }}
+      className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 overflow-hidden"
     >
+      {/* video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="https://res.cloudinary.com/dyd43a6jy/video/upload/v1780297177/157263-814315674_1_z3sktg.mp4" type="video/mp4" />
+      </video>
       {/* dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/45" />
+      <div className="absolute inset-0 bg-black/50" />
 
       <div className="max-w-7xl mx-auto relative">
         <motion.div style={{ y, opacity }} className="relative z-10 max-w-2xl">
@@ -508,9 +517,9 @@ function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
           <img
-            src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694465607_3d0f4dbc-7757-40a2-b182-6f4ce878b8df.png"
+            src="https://res.cloudinary.com/dyd43a6jy/image/upload/v1780298016/Gemini_Generated_Image_j75yprj75yprj75y-removebg-preview_buh5md.png"
             alt="張醫師的快樂農場"
-            className="h-8 w-auto object-contain mix-blend-darken"
+            className="h-12 w-auto object-contain "
           />
         </div>
         <div>© {new Date().getFullYear()} 快樂農場・經典平飼特色蛋</div>
