@@ -9,14 +9,14 @@ export function LineButton({
 }) {
   return (
     <motion.a
-      href="https://line.me/"
+      href="https://13.63.69.9.nip.io/lineapp/"
       target="_blank"
       rel="noopener noreferrer"
       whileHover={{ scale: 1.04, y: -2 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 400, damping: 18 }}
-      className={`inline-flex items-center gap-3 rounded-full bg-line text-line-foreground font-semibold shadow-warm hover:shadow-[0_25px_60px_-15px_oklch(0.72_0.18_145/0.5)] transition-shadow ${
-        size === "lg" ? "px-8 py-4 text-lg" : "px-6 py-3 text-base"
+      className={`inline-flex items-center gap-3 rounded-full bg-line text-line-foreground font-semibold shadow-warm hover:shadow-[0_25px_60px_-15px_oklch(0.72_0.18_145/0.5)] transition-shadow whitespace-nowrap ${
+        size === "lg" ? "px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg" : "px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base"
       }`}
     >
       <svg viewBox="0 0 24 24" fill="currentColor" className={size === "lg" ? "h-6 w-6" : "h-5 w-5"}>

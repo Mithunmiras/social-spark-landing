@@ -3,9 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { LineButton } from "@/components/LineButton";
 import { Reveal } from "@/components/Reveal";
-import heroFarm from "@/assets/hero-farm.jpg";
 import eggRollsPoster from "@/assets/egg-rolls-poster.jpg";
-import drChang from "@/assets/dr-chang.jpg";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -38,7 +36,7 @@ function Nav() {
         <div className="flex items-center gap-2">
           <img
             src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694465607_3d0f4dbc-7757-40a2-b182-6f4ce878b8df.png"
-            alt="張醫師的樂活農場"
+            alt="張醫師的快樂農場"
             className="h-10 w-auto object-contain mix-blend-darken"
           />
         </div>
@@ -81,7 +79,7 @@ function MobileMenu() {
               <div className="flex items-center gap-2">
                 <img
                   src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694465607_3d0f4dbc-7757-40a2-b182-6f4ce878b8df.png"
-                  alt="張醫師的樂活農場"
+                  alt="張醫師的快樂農場"
                   className="h-10 w-auto object-contain mix-blend-darken"
                 />
               </div>
@@ -117,7 +115,7 @@ function Hero() {
     <section
       ref={ref}
       className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: `url(${heroFarm})` }}
+      style={{ backgroundImage: `url(https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779937031297_Gemini_Generated_Image_uincsyuincsyuinc__1_.png)` }}
     >
       {/* dark overlay for readability */}
       <div className="absolute inset-0 bg-black/45" />
@@ -138,11 +136,11 @@ function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold leading-[1.05] text-white"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.05] text-white"
           >
             張醫師的
             <br />
-            <span className="text-gradient-sun">樂活農場</span>
+            <span className="text-gradient-sun">快樂農場</span>
           </motion.h1>
 
           <motion.p
@@ -192,7 +190,7 @@ function Hero() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div>
-      <div className="font-display text-2xl font-bold text-accent">{n}</div>
+      <div className="font-display text-2xl font-bold text-white">{n}</div>
       <div className="text-xs uppercase tracking-wider mt-1">{label}</div>
     </div>
   );
@@ -204,7 +202,7 @@ function Story() {
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <Reveal className="relative">
           <div className="aspect-square rounded-3xl overflow-hidden shadow-warm">
-            <img src={drChang} alt="張醫師" className="w-full h-full object-cover" />
+            <img src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1780287819505_Gemini_Generated_Image_h3miwnh3miwnh3mi__1_.png" alt="張醫師" className="w-full h-full object-cover" />
           </div>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -231,7 +229,7 @@ function Story() {
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed text-lg">
             我們相信，好食材來自善待生命的態度。
-            這就是樂活農場想傳遞給每個家庭的，簡單而真誠的美味。
+            這就是快樂農場想傳遞給每個家庭的，簡單而真誠的美味。
           </p>
         </Reveal>
       </div>
@@ -357,7 +355,7 @@ function GroupBuy() {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 text-primary text-sm font-semibold mb-5">
               <span className="text-base">🛒</span> Group Buy・揪團優惠
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight">
               一起揪團，<span className="text-gradient-sun">越多越優惠</span>
             </h2>
           </Reveal>
@@ -441,7 +439,7 @@ function Promise() {
           <div className="text-sm font-semibold tracking-[0.2em] text-secondary uppercase mb-4">
             Our Promise
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
             四個堅持，守護每一份美味
           </h2>
         </Reveal>
@@ -482,10 +480,10 @@ function CTA() {
               transition={{ duration: 6, repeat: Infinity }}
             />
             <div className="relative">
-              <h2 className="text-4xl md:text-6xl font-bold text-accent-foreground leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-accent-foreground leading-tight">
                 準備好嚐一口
                 <br />
-                樂活的滋味了嗎？
+                快樂的滋味了嗎？
               </h2>
               <p className="mt-6 text-lg text-accent-foreground/90 max-w-xl mx-auto">
                 加入我們的 LINE 官方帳號，掌握最新優惠與新品上市，享受最便捷的訂購體驗。
@@ -511,13 +509,13 @@ function Footer() {
         <div className="flex items-center gap-2">
           <img
             src="https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779694465607_3d0f4dbc-7757-40a2-b182-6f4ce878b8df.png"
-            alt="張醫師的樂活農場"
+            alt="張醫師的快樂農場"
             className="h-8 w-auto object-contain mix-blend-darken"
           />
         </div>
-        <div>© {new Date().getFullYear()} 樂活農場・經典平飼特色蛋</div>
+        <div>© {new Date().getFullYear()} 快樂農場・經典平飼特色蛋</div>
         <a
-          href="https://line.me/"
+          href="https://13.63.69.9.nip.io/lineapp/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-line hover:underline font-semibold"
