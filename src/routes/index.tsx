@@ -124,7 +124,7 @@ function Hero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="https://res.cloudinary.com/dyd43a6jy/video/upload/v1780297177/157263-814315674_1_z3sktg.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dyd43a6jy/video/upload/v1780300489/14526872_1920_1080_25fps_rlnr0q.mp4" type="video/mp4" />
       </video>
       {/* dark overlay for readability */}
       <div className="absolute inset-0 bg-black/50" />
