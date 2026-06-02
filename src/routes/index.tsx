@@ -252,7 +252,7 @@ const products = [
     tag: "農場直送",
     title: "經典平飼特色蛋",
     desc: "嚴選自然放牧鮮蛋，蛋黃飽滿、蛋香濃郁，每日新鮮現撿，產地直送到府。",
-    features: ["10入 / 20入 裝", "禮盒包裝可選", "冷藏宅配"],
+    features: ["10入 / 24入 裝", "禮盒包裝可選", "冷藏宅配", "購買 5 盒以上享折扣，請聯繫客服"],
   },
   {
     img: "https://digitner-bucket.s3.ap-south-1.amazonaws.com/image/1779936858254_Gemini_Generated_Image_m480y5m480y5m480.png",
@@ -335,19 +335,6 @@ const groupBuyTiers = [
     perks: ["免運門檻達成", "贈送限量小蛋捲", "專屬團主回饋"],
     accent: "from-secondary/40 to-secondary/10",
   },
-  {
-    size: "30+",
-    title: "人氣團購組",
-    perks: ["95 折優惠價", "加贈手工蛋捲一罐", "團主回饋 5%"],
-    accent: "from-primary/30 to-primary/5",
-    featured: true,
-  },
-  {
-    size: "50+",
-    title: "企業團購組",
-    perks: ["9 折優惠價", "客製化禮盒包裝", "團主回饋 8%", "可開立發票"],
-    accent: "from-accent/30 to-accent/5",
-  },
 ];
 
 function GroupBuy() {
@@ -376,7 +363,7 @@ function GroupBuy() {
           </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid gap-6 max-w-sm">
           {groupBuyTiers.map((t, i) => (
             <Reveal key={t.title} delay={i * 0.1}>
               <motion.div
