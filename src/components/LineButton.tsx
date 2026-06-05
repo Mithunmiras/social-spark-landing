@@ -9,7 +9,7 @@ export function LineButton({
 }) {
   return (
     <motion.a
-      href="https://13.63.69.9.nip.io/lineapp/"
+      href="https://13.48.203.49.nip.io/lineapp/"
       target="_blank"
       rel="noopener noreferrer"
       whileHover={{ scale: 1.04, y: -2 }}
